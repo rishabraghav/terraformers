@@ -1,0 +1,57 @@
+<%- include('partials/header') %>
+<div class="homecontainer">
+
+
+    <div class="scheduleappointment">
+        <form action="/" method="POST">
+            <div class="appointment-container">
+                <h3>Schedule an appointment?</h3>
+            </div>
+            <div class="appointmentcontainer">
+                <label class="textcenter" for="title">Title</label>
+                <input name="title">
+            </div>
+            <div class="appointmentcontainer">
+                <label class="textcenter" for ="agenda">Agenda</label>
+                <input name="agenda">
+            </div>
+            <div class="appointmentcontainer">
+                <label class="textcenter" for ="time">Time</label>
+                <input name="time">
+            </div>
+            <div class="appointmentcontainer">
+                <label class="textcenter" for ="guest">Guest</label>
+                <input name="guest">
+            </div>
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
+
+    </div>
+
+    <div class="upcomingappointment">
+        <div class="appointmentTitle">
+            <h5>Upcoming Appointments!</h5>
+        </div>
+        <div class="appointmentContent">
+            <% users.forEach(function(user) { %>
+                <div class="appointmentcontainer">
+                    <h6>   <%= user.title %> </h6> 
+                </div>
+                <div class="appointmentcontainer">
+                    <h6>   <%= user.agenda %> </h6> 
+                </div>
+                <div class="appointmentcontainer">
+                    <h6>   <%= user.time %> </h6> 
+                </div>
+                <div class="appointmentcontainer">
+                    <h6>   <%= user.guest %> </h6> 
+                </div> 
+                <br><br><br>
+                <%   }) %>
+        </div>
+        
+            
+    </div>
+
+</div>
+<%- include('partials/footer') %>

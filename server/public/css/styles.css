@@ -1,0 +1,46 @@
+
+.scheduleappointment{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    border: 3px dotted green;
+}
+
+.upcomingappointment{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    position: absolute;
+    height: 100%;
+    width: 30%;
+    margin-left: 70%;
+    padding: 10px;
+}
+.appointmentTitle{
+    text-align: center;
+
+}
+.appointmentContent{
+
+
+}
+.appointmentcontainer{
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+
+
+.textcenter{
+    text-align: center;
+}
+.homecontainer{
+    border: 3px solid black;
+    height: 100%;
+}
