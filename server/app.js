@@ -4,9 +4,10 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const passportLocalMongoose = require('passport-local-mongoose');
 const session = require('express-session');
+require("dotenv").config(); 
 
 const app = express();
-
+const port = process.env.PORT || 3000;
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
@@ -20,28 +21,34 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect('mongodb://localhost:27017/usersDB', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true});
+
 
 const UsersSchema = new mongoose.Schema ({
     username: String,
     password: String,
 });
 
-let name;
 
-const AppointmentSchema = new mongoose.Schema ({
-    username: String,
-    title: String,
-    agenda: String,
-    time: Number,
-    guest: String
-})
+
+// const AppointmentSchema = new mongoose.Schema ({
+//     username: String,
+//     name: String,
+//     title: String,
+//     agenda: String,
+//     time: Number,
+//     guest: String
+// })
+
+let name;
+let username;
 
 UsersSchema.plugin(passportLocalMongoose);
 
 let appointmentArray = [];
 
 const User = mongoose.model('Users', UsersSchema);
+// const Appointment = mongoose.model('Appointments', AppointmentSchema, 'users');
 
 passport.use(User.createStrategy());
 
@@ -130,7 +137,18 @@ app.post('/logout', function(req, res, next) {
 
 app.post('/register', (req, res) => {
     name = req.body.name;
+    username = req.body.username;
+
+    // const newAppointment = new Appointment({
+    //     username: username,
+    //     name: name
+    // });
+
+    // console.log(newAppointment);
+    // newAppointment.save();
+
     console.log(name);
+    console.log(username);
     User.register({username:req.body.username, active: false}, req.body.password, function(err, user) {
         if (err) { 
             console.log(err);
@@ -145,6 +163,6 @@ app.post('/register', (req, res) => {
 });
 
 
-app.listen(3000, function(req, res) {
+app.listen(port, function(req, res) {
     console.log("server started in port 3000");
 });
