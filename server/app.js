@@ -53,9 +53,6 @@ passport.serializeUser(function(User, done) {
     done(null, User);
   });
 
-  passport.use(new LocalStrategy({
-    usernameField: 'email',
-  },User.authenticate()));
 
 app.get('/', (req, res) => {
     res.render('login', {
@@ -113,7 +110,7 @@ app.post('/login', (req, res) => {
             console.log(err);
         } else {
             passport.authenticate("local")(req, res, function() {
-                res.redirect('/');
+                res.redirect('/home');
             });
         }
     });
