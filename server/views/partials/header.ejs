@@ -13,8 +13,10 @@
     
 <!-- Image and text -->
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="/">
-      <img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-      Terraformers
-    </a>
-  </nav>
+  <div class="container-fluid">
+    <a class="navbar-brand">Terraformers</a>
+    <form action='/logout' class="d-flex input-group w-auto" method="POST">
+      <button type="submit" class="btn btn-outline-danger">Sign out</button>
+    </form>
+  </div>
+</nav>

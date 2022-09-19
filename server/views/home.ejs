@@ -1,27 +1,27 @@
 <%- include('partials/header') %>
 <div class="homecontainer">
 
-
+    <h1 class="heading"> Welcome <%= name %></h1>
     <div class="scheduleappointment">
-        <form action="/" method="POST">
+        <form action="/home" method="POST">
             <div class="appointment-container">
                 <h3>Schedule an appointment?</h3>
             </div>
             <div class="appointmentcontainer">
-                <label class="textcenter" for="title">Title</label>
-                <input name="title">
+                <label class="textcenter" for="title">TITLE</label>
+                <input placeholder="subject" name="title">
             </div>
             <div class="appointmentcontainer">
-                <label class="textcenter" for ="agenda">Agenda</label>
-                <input name="agenda">
+                <label class="textcenter" for ="agenda">AGENDA</label>
+                <input placeholder="agenda" name="agenda">
             </div>
             <div class="appointmentcontainer">
-                <label class="textcenter" for ="time">Time</label>
-                <input name="time">
+                <label class="textcenter" for ="time">TIME</label>
+                <input placeholder="in 24hrs format. Like 1800 for 6PM" name="time">
             </div>
             <div class="appointmentcontainer">
-                <label class="textcenter" for ="guest">Guest</label>
-                <input name="guest">
+                <label class="textcenter" for ="guest">GUEST</label>
+                <input placeholder="with?" name="guest">
             </div>
             <button type="submit" class="btn btn-dark">Submit</button>
         </form>
@@ -34,19 +34,24 @@
         </div>
         <div class="appointmentContent">
             <% users.forEach(function(user) { %>
-                <div class="appointmentcontainer">
-                    <h6>   <%= user.title %> </h6> 
+                <div class="appointmentcontainer appointmentcontentStyle">
+                    <h6>SUBJECT: </h6>
+                    <h5>   <%= user.title %> </h5> 
                 </div>
-                <div class="appointmentcontainer">
-                    <h6>   <%= user.agenda %> </h6> 
+                <div class="appointmentcontainer appointmentcontentStyle">
+                    <h6>AGENDA: </h6>
+                    <h5>   <%= user.agenda %> </h5> 
                 </div>
-                <div class="appointmentcontainer">
-                    <h6>   <%= user.time %> </h6> 
+                <div class="appointmentcontainer appointmentcontentStyle">
+                    <h6>AT: </h6>
+                    <h5>   <%= user.time %> </h5> 
+                    <h6>HOURS</h6>
                 </div>
-                <div class="appointmentcontainer">
-                    <h6>   <%= user.guest %> </h6> 
-                </div> 
-                <br><br><br>
+                <div class="appointmentcontainer appointmentcontentStyle">
+                    <h6>WITH: </h6>
+                    <h5>   <%= user.guest %> </h5> 
+                </div>
+                <br><br>
                 <%   }) %>
         </div>
         
